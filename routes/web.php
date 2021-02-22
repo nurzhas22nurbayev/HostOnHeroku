@@ -27,3 +27,14 @@ Route::get('/test', function () {
 Route::get('/welcome/{id}', function () {
     return view('welcome3');
 });
+
+Route::get('/student/{id}', "StudentController@index");
+
+Route::get('/name', function () {
+    return view('welcome3', ['name' => 'Nurzhas']);
+});
+
+Route::get('/user/{name}', function ($name) {
+    return view('welcome3', compact('name'));
+});
+
