@@ -6,21 +6,23 @@ use Illuminate\Http\Request;
 
 class StudentController extends Controller
 {
+
+    // THREE FUNCTIONS 
     public function getName()
     {
         return view('stu_one', ['name' => "Nurzhas"]);
     }
 
-    public function getDateOfBirth()
+    public function getDate()
     {
         return view('stu_two')->with('date','2002-06-22');
     }   
 
-    public function getAge()
+    public function getAge($age = 7)
     {
-        return view('stu_three');
+        return view('stu_three', compact('age'));
     }
-
+    /*--------------------------------------------------------*/
     
     public function get_students()
     {

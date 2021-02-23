@@ -41,5 +41,8 @@ Route::get('/user/{name}', function ($name) {
 
 Route::get('/students/{id}', "StudentController@show");
 
+// ROUTES TO LAB5
 Route::get('/getName', "StudentController@getName");
+Route::get('/getDate', "StudentController@getDate");
+Route::get('/getAge', "StudentController@getAge");
 
