@@ -13,7 +13,7 @@ class StudentController extends Controller
 
     public function getDateOfBirth()
     {
-
+        
     }
 
     public function getAge()
