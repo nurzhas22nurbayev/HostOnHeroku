@@ -13,12 +13,12 @@ class StudentController extends Controller
 
     public function getDateOfBirth()
     {
-        
-    }
+        return view('stu_two')->with('date','2002-06-22');
+    }   
 
     public function getAge()
     {
-
+        return view('stu_three');
     }
 
     
