@@ -6,6 +6,28 @@ use Illuminate\Http\Request;
 
 class StudentController extends Controller
 {
+    public function getName()
+    {
+        return view('stu_one', ['name' => "Nurzhas"]);
+    }
+
+    public function getDateOfBirth()
+    {
+
+    }
+
+    public function getAge()
+    {
+
+    }
+
+    
+    public function get_students()
+    {
+        static $students = array(0 => "Athos", 1 => "Porthos", 2 => 
+        "Aramis");
+        return $students;
+    }
     /**
      * Display a listing of the resource.
      *
@@ -46,6 +68,8 @@ class StudentController extends Controller
      */
     public function show($id)
     {
+        $students = $this->get_students();
+        return view("student_info", ["name" => $students[$id]]);
         //
     }
 

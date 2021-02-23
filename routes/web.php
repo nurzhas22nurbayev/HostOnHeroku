@@ -16,6 +16,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+// this returns my name
 Route::get('/wel', function () {
     return view('welcome2');
 });
@@ -37,4 +38,8 @@ Route::get('/name', function () {
 Route::get('/user/{name}', function ($name) {
     return view('welcome3', compact('name'));
 });
+
+Route::get('/students/{id}', "StudentController@show");
+
+Route::get('/getName', "StudentController@getName");
 
