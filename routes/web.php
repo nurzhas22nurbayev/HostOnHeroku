@@ -1,6 +1,6 @@
 <?php
 use Illuminate\Support\Facades\Route;
-
+use App\Models\Student;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -46,3 +46,103 @@ Route::get('/getName', "StudentController@getName");
 Route::get('/getDate', "StudentController@getDate");
 Route::get('/getAge', "StudentController@getAge");
 
+
+Route::get('/testblade', function () {
+    return view('test');
+});
+
+Route::get('/insert', function () {
+    DB::insert("insert into posts(title, body) values(?,?)"
+    ,['My title', 'My body']);
+});
+
+
+/*  ----------------- LABARATORY WORK 6 ----------------------   */ 
+
+/* INSERTING DATA INTTO STUDENTS TABLE */
+Route::get('/insert2', function () {
+    DB::insert("insert into students(name, date_of_birth, gpa, advisor) values('Magzhan', '2001-05-05', 3.1, 'Linus')");
+});
+
+/* SELECTING  DATA FROM STUDENTS TABLE */
+Route::get('/select2', function(){
+    $res = DB::select('select * from students where id=?', [2]);
+
+    foreach($res as $students)
+    {
+        echo "name is : " . $students->name;
+        echo "<br>";
+        echo "date_of_birth is : " . $students->date_of_birth;
+        echo "<br>";
+        echo "gpa is : " . $students->gpa;
+        echo "<br>";
+        echo "advisor is : " . $students->advisor;
+    }
+});
+
+/* UPDATING DATA IN STUDENTS TABLE */
+Route::get('/update2', function(){
+    $updated = DB::update('update students set name = "Steve" where id = ?', [1]);
+    return $updated;
+});
+
+/* DELETING DATA FROM STUDENTS TABLE */
+Route::get('/delete2', function(){
+    $deleted = DB::delete('delete from students where id = ?', [3]);
+    return $deleted;
+});
+
+/* INSERTING USING STUDENT MODEL */
+Route::get('/insert3', function () {
+    $student = new Student;
+
+    $student->name='Dastan';
+    $student->date_of_birth='2002-02-02';
+    $student->gpa=4.0;
+    $student->advisor='Dauren';
+    $student->save(); 
+});
+
+/* UPDATING USING STUDENT MODEL */
+Route::get('/update3', function(){
+    $student = new Student;
+
+    $student = Student::find(1);
+    $student->name='Dijkstra';
+    $student->save(); 
+});
+/* SELECTING USING STUDENT MODEL */
+Route::get('/select3', function(){
+    $student = new Student;
+
+    $student = Student::all();
+
+    foreach($student as $stu)
+    {
+        echo "name is : " . $stu->name;
+        echo "<br>";
+        echo "date_of_birth is : " . $stu->date_of_birth;
+        echo "<br>";
+        echo "gpa is : " . $stu->gpa;
+        echo "<br>";
+        echo "advisor is : " . $stu->advisor;
+        echo "<br>";
+    }
+});
+
+/* DELETING USING STUDENT MODEL */
+Route::get('/delete3', function(){
+    $student = new Student;
+
+    $student = Student::find(4);
+    $student->delete();
+});    
+
+
+/* X  ---------------------------------------------------------  X */ 
+
+
+
+Route::get('/test/{id}/{first_name?}/{last_name?}', function($id = null, $first_name = "Nurzhas", $last_name = "Nurbayev"){
+    return "ID : " . $id . "First name : " . $first_name . " Last name : " . $last_name;      
+});
