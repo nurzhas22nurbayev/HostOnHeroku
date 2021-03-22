@@ -1,0 +1,32 @@
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+}
+a {
+  text-decoration: none !important;
+  text-decoration-line: none !important;
+}
+.ourProductsImg {
+  height: 60vh;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(images/ourProducts.jpg);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  margin: 15vh 4vw 0vh 4vw;
+}
+.ourProductsImg .t-ourPs {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-top: 15%;
+  color: white;
+}
+.products .pr {
+  height: 70vh;
+  margin: 3vh 4vw 0vh 4vw;
+  background-image: url(images/ourPs1.jpg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}

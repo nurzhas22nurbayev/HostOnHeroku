@@ -11,10 +11,47 @@ use App\Models\Student;
 | contains the "web" middleware group. Now create something great!
 |
 */
+/*----------------------------------------------- WEBSITE ROUTES --------------------------------------------------------*/
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('index');
 });
+
+Route::get('/index.blade.php', function () {
+    return redirect('/');
+});
+
+Route::get('/ourProducts.blade.php', function () {
+    return view('ourProducts');
+});
+
+Route::get('/blog.blade.php', function () {
+    return view('blog');
+});
+
+Route::get('/brand.blade.php', function () {
+    return view('brand');
+});
+
+Route::get('/innoSus.blade.php', function () {
+    return view('innoSus');
+});
+
+Route::get('/contactUs.blade.php', function () {
+    return view('contactUs');
+});
+
+Route::get('/user', 'UserController@index');
+
+Route::post('/useradd', 'UserController@store');
+
+/*xxxxxxxxxxxxxxxxx ----------------------------- WEBSITE ROUTES ------------------------------------ xxxxxxxxxxxxxxxxxx*/
+
+Route::get('/{lang}', function($lang){
+    App::setlocale($lang);
+    return view('index');
+});
+
 
 // this returns my name
 Route::get('/wel', function () {
