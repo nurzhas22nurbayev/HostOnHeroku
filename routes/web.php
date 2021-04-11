@@ -30,10 +30,10 @@ Route::get('mail/send', 'MailController@send');
 
 
 Route::get('/', function () {
-    return view('index');
+    return view('my_index');
 });
 
-Route::get('/index.blade.php', function () {
+Route::get('/my_index.blade.php', function () {
     return redirect('/');
 });
 
