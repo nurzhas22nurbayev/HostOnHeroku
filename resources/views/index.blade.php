@@ -45,7 +45,7 @@
           <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav">
               <a class="nav-item nav-link" href="ourProducts.blade.php">{{__('OUR PRODUCTS')}}</a>
-              <a class="nav-item nav-link" href="blog.blade.php">_{{_('BLOG')}}</a>
+              <a class="nav-item nav-link" href="blog.blade.php">{{__('BLOG')}}</a>
               <a class="nav-item nav-link" href="brand.blade.php">{{__('BRAND')}}</a>
               <a class="nav-item nav-link" href="innoSus.blade.php">{{__('INNOVATION & SUSTAINABILITY')}}</a>
               <a class="nav-item nav-link" href="contactUs.blade.php">{{__('CONTACT US')}}</a>
