@@ -4,84 +4,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <script src="https://api-maps.yandex.ru/2.1/?apikey=840a21fc-fd91-481d-8052-fed6b4509534&lang=en_US" type="text/javascript">
-    </script>
 
-    <script type="text/javascript">
-        ymaps.ready(function () {
-    var myMap = new ymaps.Map('map', {
-            center: [37.778062, -122.417376],
-            zoom: 12
-        }, {
-            searchControlProvider: 'yandex#search'
-        }),
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
 
-        MyIconContentLayout = ymaps.templateLayoutFactory.createClass(
-            '<div style="color: #FFFFFF; font-weight: bold;">$[properties.iconContent]</div>'
-        ),
-
-        myPlacemark = new ymaps.Placemark(myMap.getCenter(), {
-            hintContent: 'My placemark',
-            balloonContent: 'pretty place'
-        }, {
-          
-            iconLayout: 'default#image',
-            iconImageHref: 'images/place-mark.png',
-            
-            iconImageSize: [30, 42],
-            iconImageOffset: [-5, -38]
-        });
-
-    myMap.geoObjects
-        .add(myPlacemark);
-
-        var myGeoObject = new ymaps.GeoObject({
-            geometry: {
-                type: "LineString",
-                coordinates: [
-                    [37.778062, -122.417376],
-                    [37.836484, -122.478426]
-                ]
-            },
-            properties:{
-                hintContent: "geo object",
-                balloonContent: "You can drag me"
-            }
-        }, {
-            draggable: true,
-            strokeColor: "#00FFFF",
-            strokeWidth: 5
-        });
-
-        myMap.geoObjects
-        .add(myGeoObject);
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway:100,600" type="text/css">
 
 
-        myGeoObject = new ymaps.GeoObject({
-        geometry: {
-            type: 'Rectangle',
-            coordinates: [
-                [37.768062, -122.417376],
-                [37.748062, -122.427376]
-            ]
-        },
-        properties: {
-            hintContent: 'Drag me!',
-            balloonContent: 'That is an Rectangle'
-        }
-    }, {
-        draggable: true,
-        fillColor: '#ffff0022',
-        strokeColor: '#3caa3c88',
-        strokeWidth: 7
-    });
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
-    myMap.geoObjects
-        .add(myGeoObject);
-});
 
-    </script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">  
 
+
+    
+
+<style>
+    .container {
+        margin-top:2%;
+    }
+</style>
 
     <title>Contact Us</title>
 </head>
@@ -133,76 +74,41 @@
         <p>Whether you are looking for answers, would like to solve a problem or just share your thoughts, please use our online contact form to get in touch with our Customer Service.</p>
     </div>
     
-    <div class="address">
-        <div class="addImg-div">
-            <img src="images/loc.png" height="5rem" width="5rem" alt="loc">   
-        </div>
-        <div class="add-div">
-            <address>
-                Visit us at:<br>
-                curver.com<br>
-                Customer Service Department
-                ZI Haneboesch, L-4562
-                Niedercorn, LUXEMBOURG<br>
-            </address>
+
+    @if (count($errors) > 0)
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+    @endif
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6"><h2>file uploading</h2></div>
         </div>
     </div>
-
-
-    <div class="input-fields">
-      <div class="yan-map" id="map">
-
-      </div>
-      <div class="inputs-container">
-        <div class="ten-inputs">
-          <form class="myForm">
-            <input type="text" class="form-control" placeholder="Last Name*">
-            <input type="text" class="form-control" placeholder="First Name*">
-            <input type="text" class="form-control" placeholder="Address*">
-            <input type="text" class="form-control" placeholder="Zip Code*">
-            <select class="form-control">
-              <option value="" selected disabled hidden>Select your country</option>
-              <option>Australia</option>
-              <option>Great Britain</option>
-              <option>United States of America</option>
-            </select>        
-            <input type="text"  class="form-control" placeholder="Town*">
-            <input type="email" class="form-control" id="email" name="email" placeholder="Email*" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" title="there">
-            <input type="text"  class="form-control" placeholder="Phone*">
-            <select class="form-control">
-              <option value="" selected disabled hidden>Demand object*</option>
-              <option>Product details</option>
-              <option>How to use or maintain a product</option>
-              <option>Spare parts</option>
-              <option>Where to buy</option>
-              <option>Spare parts</option>
-              <option>Ideas or suggestions to share</option>
-              <option>Others</option>
-            </select>
-            <select class="form-control">
-              <option value="" selected disabled hidden>Category*</option>
-              <option>Storage</option>
-              <option>Waste bin</option>
-              <option>Kitchen</option>
-              <option>Laundry</option>
-              <option>Cleaning</option>
-              <option>Kids & Licences</option>
-              <option>Pets</option>
-              <option>Cross range</option>
-              <option>Others</option>
-            </select>
-            <div class="area">
-              <textarea class="form-control" id="text-area"></textarea>
-            </div>
-            <input class="form-control" type="reset" value="Reset">
-            <input type="submit" id="submit-btn" value="Submit">
-          </form>
+    <br>
+    <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
+            <form action="http://localhost/test/public/multiuploads" method="post" enctype="multipart/form-data" >
+                {{ csrf_field() }}
+                <div class="form-droup">
+                    <label for="Product Name">Product Name</label>
+                    <input type="text" name="name" class="form-control" placeholder="Product Name" >
+                    </div>
+                    <label for="Product Name">Product photos (can attach more than one): </label>
+                    <br>
+                    <input type="file" class="form-control" name="photos[]" multiple>
+                    <br> <br>
+                    <input type="submit" class="btn btn-primary" value="Upload">
+            </form>
         </div>
-      </div>
-      
-  
-         
     </div>
+    </div>     
+    
 
 
      <!------    FOOTER CONTENT      ------>

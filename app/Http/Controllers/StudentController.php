@@ -6,6 +6,11 @@ use Illuminate\Http\Request;
 
 class StudentController extends Controller
 {
+    public function index()
+    {
+        echo 'akjfnakjfna';
+    }
+
 
     // THREE FUNCTIONS 
     public function getName()
@@ -35,11 +40,6 @@ class StudentController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($id)
-    {
-        echo "OK" . $id;
-        //
-    }
 
     /**
      * Show the form for creating a new resource.
@@ -108,4 +108,6 @@ class StudentController extends Controller
     {
         //
     }
+
+    
 }

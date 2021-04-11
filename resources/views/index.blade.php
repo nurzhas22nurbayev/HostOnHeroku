@@ -30,6 +30,8 @@
     
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <title>{{__('Curver | Designed by people for people curver.com')}} </title>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
 </head>
 
 <body>
@@ -43,14 +45,14 @@
           <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav">
               <a class="nav-item nav-link" href="ourProducts.blade.php">{{__('OUR PRODUCTS')}}</a>
-              <a class="nav-item nav-link" href="blog.blade.php">{{__('BLOG')}}</a>
+              <a class="nav-item nav-link" href="blog.blade.php">_{{_('BLOG')}}</a>
               <a class="nav-item nav-link" href="brand.blade.php">{{__('BRAND')}}</a>
               <a class="nav-item nav-link" href="innoSus.blade.php">{{__('INNOVATION & SUSTAINABILITY')}}</a>
               <a class="nav-item nav-link" href="contactUs.blade.php">{{__('CONTACT US')}}</a>
             </div>
         </div>
         
-
+        
         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#useraddmodal">
             {{__('Sign up')}}    
         </button>  
@@ -299,6 +301,10 @@
                 </div>
             </div>
         </div>  
+
+        <canvas id="myChart1" ></canvas>
+        <canvas id="myChart2" ></canvas>
+        <canvas id="myChart3" ></canvas>
           
         <!------    FOOTER CONTENT      ------>
         
@@ -362,22 +368,18 @@
                     
 
 <script type="text/javascript">
-    /*
-            $('#myModal').on('shown.bs.modal', function () {
-  $('#myInput').trigger('focus')
-});
-*/
+    /* -------------- AJAX ------------------*/
     $(document).ready(function(){
         $('#addform').on('submit', function(e){
             e.preventDefault();
 
             $.ajax({
                 type: "POST",
-                url: "/useradd",
+                url: "http://localhost/test/public/useradd",
                 data: $('#addform').serialize(),
                 success: function(response){
-                    console.log(response)
-                    $('#useraddmodal').modal('hide')
+                    console.log(response);
+                    $('#useraddmodal').modal('hide');
                     alert("Data saved");
                 },
                 error: function(error){
@@ -388,6 +390,79 @@
         });
     });
 
+
+    /* -----------------------   CHART JS IMPLEMENTATION   ------------------------- */
+
+    var ctx1 = document.getElementById("myChart1");
+    var myChart1 = new Chart(ctx1, {
+        type: 'bar',
+        data:{
+            labels: ["2005", "2007", "2009", "2012", "2014"],
+            datasets: [
+                {
+                    label:'product purchase indicators',
+                    data: [50,80,90,100,110],
+                    backgroundColor :['yellow',
+                    'green',
+                    'cyan',
+                    'orange',
+                    'pink',
+                    ],
+                }
+            ]
+        },
+        options: {
+            scales:{
+                yAxes:[{
+                    ticks: {
+                        beginAtZero: true
+                    }
+                }]
+            }
+        }
+    });
+
+
+    var ctx2 = document.getElementById("myChart2");
+    var myChart2 = new Chart(ctx2, {
+        type: 'pie',
+        data:{
+            labels: ["Waste Bin", "Kitchen", "Laundry", "Storage", "Kids&Licenses", "Pets", "Cross Range", "Cleaning"],
+            datasets: [
+                {
+                    label:'Our products',
+                    data: [10,20,30,15,35, 10, 30, 40],
+                    backgroundColor :['red',
+                    'purple',
+                    'yellow',
+                    'brown',
+                    'green',
+                    'cyan',
+                    'orange',
+                    'blue',
+                    ],
+                }
+            ]
+        },
+        options: {
+            scales:{
+                yAxes:[{
+                    ticks: {
+                        beginAtZero: true
+                    }
+                }]
+            }
+        }
+    });
+
+    var ctx3 = document.getElementById("myChart3");
+    var myChart3 = new Chart(ctx3, {
+        "type":"line",
+        "data":{
+            "labels":["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul"],
+            "datasets":[{"label":"Growing", "data":[15,25,30, 59,80,81, 100],
+            "fill":false, "borderColor":"rgb(75,192,192)", "lineTension":0.1}]},
+            "options":{}});
 
 </script>
 

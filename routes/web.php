@@ -1,6 +1,7 @@
 <?php
 use Illuminate\Support\Facades\Route;
 use App\Models\Student;
+use App\Http\Controllers;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,6 +14,21 @@ use App\Models\Student;
 */
 /*----------------------------------------------- WEBSITE ROUTES --------------------------------------------------------*/
 
+/* ------------------------ LAB 10 --------------------------- */
+
+Route::get('/multiuploads', 'UploadController@uploadForm');
+
+Route::post('/multiuploads', 'UploadController@uploadSubmit');
+
+
+/*------------ EMAIL SENDING*/
+
+Route::get('mail/send', 'MailController@send');
+/* X----------------------- LAB 10 --------------------------X */
+
+
+
+
 Route::get('/', function () {
     return view('index');
 });
@@ -20,6 +36,12 @@ Route::get('/', function () {
 Route::get('/index.blade.php', function () {
     return redirect('/');
 });
+
+
+Route::get('/my', function () {
+    return view('my_index');
+});
+
 
 Route::get('/ourProducts.blade.php', function () {
     return view('ourProducts');
@@ -183,3 +205,6 @@ Route::get('/delete3', function(){
 Route::get('/test/{id}/{first_name?}/{last_name?}', function($id = null, $first_name = "Nurzhas", $last_name = "Nurbayev"){
     return "ID : " . $id . "First name : " . $first_name . " Last name : " . $last_name;      
 });
+
+
+
